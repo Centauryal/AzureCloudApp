@@ -39,7 +39,7 @@
                 <?php
                     include ("db_connection.php");
                     try {
-                        $getdata = "SELECT * FROM tb_user";
+                        $getdata = "SELECT * FROM [dbo].[tb_user]";
                         $stmt = $conn->query($getdata);
                         $data = $stmt->fetchAll();
                         if(count($data) > 0) {
@@ -69,7 +69,7 @@
                 $email = $_POST['email'];
                 $jobs = $_POST['jobs'];
 
-                $insert_query = "INSERT INTO tb_user (name, email, jobs) VALUES (?,?,?,?)";
+                $insert_query = "INSERT INTO [dbo].[tb_user] (name, email, jobs) VALUES (?,?,?,?)";
                 
                 $stmt = $conn->prepare($insert_query);
                 $stmt->bindValue(1, $name);
