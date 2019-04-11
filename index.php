@@ -69,7 +69,7 @@
                 $email = $_POST['email'];
                 $jobs = $_POST['jobs'];
 
-                $insert_query = "INSERT INTO [dbo].[tb_user] (name, email, jobs) VALUES (?,?,?,?)";
+                $insert_query = "INSERT INTO [dbo].[tb_user] (name, email, jobs) VALUES (?,?,?)";
                 
                 $stmt = $conn->prepare($insert_query);
                 $stmt->bindValue(1, $name);
