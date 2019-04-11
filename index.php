@@ -22,10 +22,10 @@
             </div>
             <button type="submit" name="register" class="btn btn-primary">Register</button>
         </form>
+        <br>
+        <br>
+        <br>
         <div>
-        <br>
-        <br>
-        <br>
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
@@ -69,7 +69,7 @@
                 $email = $_POST['email'];
                 $jobs = $_POST['jobs'];
 
-                $insert_query = "INSERT INTO tb_user (name, email, jobs) VALUES (, ?, ?, ?, ?)";
+                $insert_query = "INSERT INTO tb_user (name, email, jobs) VALUES (?,?,?,?)";
                 
                 $stmt = $conn->prepare($insert_query);
                 $stmt->bindValue(1, $name);
