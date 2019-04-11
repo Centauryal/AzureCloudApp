@@ -22,42 +22,44 @@
             </div>
             <button type="submit" name="register" class="btn btn-primary">Register</button>
         </form>
-    <br>
-    <br>
-    <br>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Jobs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                include ("db_connection.php");
-                try {
-                    $getdata = "SELECT * FROM tb_user";
-                    $stmt = $conn->query($getdata);
-                    $data = $stmt->fetchAll();
-                    if(count($data) > 0) {
-                        $i = 1;
-                        foreach($data as $user) {
-                            echo "<tr><td>".$i++."</td>";
-                            echo "<td>".$user['name']."</td>";
-                            echo "<td>".$user['email']."</td>";
-                            echo "<td>".$user['jobs']."</td>";
+        <div>
+        <br>
+        <br>
+        <br>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Jobs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    include ("db_connection.php");
+                    try {
+                        $getdata = "SELECT * FROM tb_user";
+                        $stmt = $conn->query($getdata);
+                        $data = $stmt->fetchAll();
+                        if(count($data) > 0) {
+                            $i = 1;
+                            foreach($data as $user) {
+                                echo "<tr><td>".$i++."</td>";
+                                echo "<td>".$user['name']."</td>";
+                                echo "<td>".$user['email']."</td>";
+                                echo "<td>".$user['jobs']."</td>";
+                            }
+                        } else {
+                            echo "<tr><td colspan=5 align=center>Data Empty</td></tr>";
                         }
-                    } else {
-                        echo "<tr><td colspan=5 align=center>Data Empty</td></tr>";
+                    } catch(Exception $e) {
+                        echo "Error: " . $e;
                     }
-                } catch(Exception $e) {
-                    echo "Error: " . $e;
-                }
-            ?>
-        </tbody>
-    </table>
+                ?>
+            </tbody>
+        </table>
+        </div>
     </div>
 
     <?php
