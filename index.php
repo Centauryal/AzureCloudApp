@@ -58,9 +58,8 @@
                       $stmt = $conn->query($getdata);
                       $data = $stmt->fetchAll(); 
                       if(count($data) > 0) {
-                          $i = 1;
                           foreach($data as $tb_user) {
-                              echo "<tr><td>".$i++."</td>";
+                              echo "<tr><td>".$tb_user['id']."</td>";
                               echo "<td>".$tb_user['name']."</td>";
                               echo "<td>".$tb_user['email']."</td>";
                               echo "<td>".$tb_user['jobs']."</td>";
