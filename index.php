@@ -47,6 +47,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Jobs</th>
+                <th>Date</th>
               </tr>
             </thead>
             
@@ -63,6 +64,7 @@
                               echo "<td>".$tb_user['name']."</td>";
                               echo "<td>".$tb_user['email']."</td>";
                               echo "<td>".$tb_user['jobs']."</td>";
+                              echo "<td>".$tb_user['date']."</td>";
                           }
                           
                       } else {
@@ -84,13 +86,15 @@
             $name = $_POST['name'];
             $email = $_POST['email'];
             $jobs = $_POST['jobs'];
+            $date = date("Y-m-d");
             
-            $insert_query = "INSERT INTO tb_user (name, email, jobs) 
-            VALUES (?,?,?)";
+            $insert_query = "INSERT INTO tb_user (name, email, jobs, date) 
+            VALUES (?,?,?,?)";
             $stmt = $conn->prepare($insert_query);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
             $stmt->bindValue(3, $jobs);
+            $stmt->bindValue(4, $date);
             $stmt->execute();
             echo "<meta http-equiv='refresh' content='0'>";
         } catch(Exception $e) {
